@@ -1,146 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
-*{
-    font-family: 'Poppins',cursive;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #ffeef2; /* warna lembut biar romantis 🩷 */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column;      /* <-- penting: susun elemen secara vertikal */
   justify-content: center;
-  height: 100vh;
-  margin: 0;
+  align-items: center;
+  gap: 24px;                   /* jarak antara foto dan tombol */
+  min-height: 100vh;
+  background: #24084e;
   font-family: "Poppins", sans-serif;
+  padding: 24px 12px;         /* sedikit padding agar tidak mepet di layar kecil */
 }
 
-.greetings, .description, .button {
-  text-align: center;
-  margin-top: 10px;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
 }
 
+/* FRAME FOTO */
 .photo-frame {
-  width: 220px;
-  height: 280px;
-  border-radius: 16px;
+  position: relative;
+  width: 90vw;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
   overflow: hidden;
-  border: 6px solid transparent;
-  background-image: linear-gradient(white, white), 
-                    linear-gradient(135deg, #ff9a9e, #fad0c4);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(255, 100, 0, 0.4),
+    0 0 60px rgba(255, 100, 0, 0.6);
+  animation: glowUp 3s infinite alternate ease-in-out;
 }
 
-.photo-frame:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+@keyframes glowUp {
+  0% {
+    box-shadow:
+      0 0 15px rgba(255, 150, 0, 0.3),
+      0 0 40px rgba(255, 100, 0, 0.4);
+  }
+  100% {
+    box-shadow:
+      0 0 25px rgba(255, 180, 0, 0.6),
+      0 0 80px rgba(255, 100, 0, 0.8);
+  }
 }
 
-.photo-frame img {
+/* FOTO */
+.imgBX img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: brightness(1.05);
 }
 
-
-body{
-    color: azure;
-    width: 100%;
-    height: 82vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(251, 177, 177);
-    /* padding-top: -30; */
+.photo-frame:hover .imgBX img {
+  transform: scale(1.05);
 }
 
-.greetings{
-    font-size: 2rem;
-    font-weight: 240;
-}
-.greetings > span{
-    animation: glow 2.5s ease-in-out infinite;
-}
-
-@keyframes glow{
-    0%, 100%{
-        color: #fff;
-        text-shadow: 0 0 12px #39c6d6, 0 0 50px #39c6d6, 0 0 100px #39c6d6;
-    }
-    10%, 90%{
-        color: #111;
-        text-shadow: none;
-    }
-}
-.greetings > span:nth-child(2){
-    animation-delay: .2s ;
-}
-.greetings > span:nth-child(3){
-    animation-delay: .4s ;
-}
-.greetings > span:nth-child(4){
-    animation-delay: .6s;
-}
-.greetings > span:nth-child(5){
-    animation-delay: .8s;
-}
-.greetings > span:nth-child(6){
-    animation-delay: 1s;
+/* FLORAL / LOVE di atas foto */
+.floral {
+  position: absolute;
+  top: -80px;          /* dinaikkan sedikit agar elegan */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;          /* diperbesar */
+  height: 360px;
+  z-index: 2;           /* pastikan tampil di atas foto */
+  animation: float 3s ease-in-out infinite;
 }
 
-.description{
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+.floral img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
 }
 
-@media screen and (max-width:574px){
-    .greetings{
-        display: block;
-        font-size: 4rem;
-        font-weight: 800;
-        text-align: center;
-    }
-    .description{
-        font-size: 2rem;
-    }
-    
-    .content .btn button {
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        border: 2px solid #fff;
-        background-color: transparent;
-        color: #fff;
-        transition: 0.3s;
-        border-radius: 8px;
-    }
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
 
-    .content .btn button:hover {
-        background-color: #14ff72cb;
-        color: #fff;
-        border-color: #14ff72cb;
-    }
+/* --- BUTTON --- */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* biar tetap di tengah layar */
+}
 
-/* Jika kamu ingin dua tombol sejajar nanti */
-    .content .btn button:nth-child(1) {
-        margin-right: 15px;
-    }
+.glow-btn {
+  background: linear-gradient(135deg, #ff9a00, #ff5e00);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 28px;
+  cursor: pointer;
+  box-shadow:
+    0 0 10px rgba(255, 150, 0, 0.4),
+    0 0 30px rgba(255, 80, 0, 0.5);
+  transition: all 0.3s ease;
+}
 
-    .content .btn button:nth-child(2) {
-        background: transparent;
-        color: #14ff72cb;
-        border: 2px solid #fff;
-        transition: 0.3s;
-    }
+.glow-btn a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    .content .btn button:nth-child(2):hover {
-        background-color: #14ff72cb;
-        color: #fff;
-        border-color: #14ff72cb;
-    }
+.glow-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 15px rgba(255, 200, 0, 0.6),
+    0 0 40px rgba(255, 100, 0, 0.8);
+}
 
+/* --- Responsif untuk iPhone --- */
+
+/* iPhone SE */
+@media (max-width: 380px) {
+  .photo-frame {
+    width: 92vw;
+    border-radius: 16px;
+  }
+  .floral {
+    width: 65px;
+    height: 65px;
+    top: -8px;
+  }
+}
+
+/* iPhone 13–14 */
+@media (max-width: 430px) and (min-width: 381px) {
+  .photo-frame {
+    width: 88vw;
+  }
+}
+
+/* iPhone Plus / Pro Max */
+@media (max-width: 480px) and (min-width: 431px) {
+  .photo-frame {
+    width: 85vw;
+  }
+  .floral {
+    width: 90px;
+    height: 90px;
+  }
 }
