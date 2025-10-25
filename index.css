@@ -6,14 +6,14 @@
 
 body {
   display: flex;
-  flex-direction: column;      /* <-- penting: susun elemen secara vertikal */
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;   /* ⬅️ geser elemen ke atas layar */
   align-items: center;
-  gap: 24px;                   /* jarak antara foto dan tombol */
+  gap: 8px;
   min-height: 100vh;
   background: #24084e;
   font-family: "Poppins", sans-serif;
-  padding: 24px 12px;         /* sedikit padding agar tidak mepet di layar kecil */
+  padding: 60px 12px 24px;       /* ⬅️ atur padding atas (bisa ubah nilainya) */
 }
 
 .container {
@@ -21,7 +21,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 16px;
+  padding: 24px;
 }
 
 /* FRAME FOTO */
@@ -79,8 +79,8 @@ body {
 }
 
 .floral img {
-  width: 200%;
-  height: 200%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   opacity: 0.9;
 }
