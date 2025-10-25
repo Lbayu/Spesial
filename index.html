@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
+    <div class="love-bg"></div>   <!-- 💕 efek hujan love -->
+
     <div class="container">
         <div class="photo-frame">
             <div class="imgBX">
@@ -24,5 +26,19 @@
         </button>
     </div>
 
+    <script>
+    const loveBg = document.querySelector('.love-bg');
+
+    // bikin 20 love jatuh acak
+    for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('span');
+        heart.style.left = Math.random() * 100 + 'vw';   // posisi horizontal acak
+        heart.style.animationDuration = 6 + Math.random() * 4 + 's'; // kecepatan acak
+        heart.style.opacity = 0.5 + Math.random() * 0.5;
+        heart.style.transform = `scale(${0.6 + Math.random() * 0.8})`;
+        loveBg.appendChild(heart);
+    }
+    </script>
+    
 </body>
 </html>
