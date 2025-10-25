@@ -134,9 +134,9 @@ body {
     border-radius: 16px;
   }
   .floral {
-    width: 65px;
-    height: 65px;
-    top: -8px;
+    width: 200px;
+    height: 200px;
+    top: -50px;
   }
 }
 
@@ -144,6 +144,11 @@ body {
 @media (max-width: 430px) and (min-width: 381px) {
   .photo-frame {
     width: 88vw;
+  }
+  .floral {
+    width: 260px;
+    height: 260px;
+    top: -60px;
   }
 }
 
@@ -153,7 +158,24 @@ body {
     width: 85vw;
   }
   .floral {
-    width: 90px;
-    height: 90px;
+    width: 300px;
+    height: 300px;
+    top: -70px;
   }
 }
+
+/* Android screen (S20 FE, Pixel, dll.) */
+@media (max-width: 440px) and (min-width: 380px) {
+  .photo-frame {
+    width: 88vw;
+  }
+
+  .floral {
+    width: 280px;       /* ukuran ideal di layar 6,4 inci */
+    height: 280px;
+    top: -60px;         /* sedikit lebih tinggi biar tidak menutupi wajah */
+    opacity: 0.95;
+  }
+}
+
+
